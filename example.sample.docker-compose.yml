@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  web:
+    build: 
+      context: .
+    image: {name}:{tag}
+    container_name: {name}
+    environment:
+        VIRTUAL_HOST: {virtual-host}
+    tty: {tty}
+    restart: {restart}
+    command: {command}
