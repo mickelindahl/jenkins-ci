@@ -32,6 +32,12 @@ pipeline {
        }
      }
      stage('Build') {
+       when {
+          anyOf {
+             branch 'master'
+             branch 'test'
+          }
+     }
        steps {
 
          sh './jenkins-ci/lib/build.sh'

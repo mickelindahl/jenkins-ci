@@ -13,6 +13,13 @@ sed -i "s/{tty}/false/g" test.docker-compose.yml
 sed -i 's/{restart}/"no"/g' test.docker-compose.yml
 sed -i 's/{TAG}/jenkins/g' test.docker-compose.yml
 sed -i 's/{SITE_URL}/dummy/g' test.docker-compose.yml
+sed -i 's/{DB_PASS}/secret/g' test.docker-compose.yml
+sed -i 's/{FACEBOOK_APP_ID}/dummy/g' test.docker-compose.yml
+sed -i 's/{FACEBOOK_APP_SECRET}/dummy/g' test.docker-compose.yml
+sed -i 's/{GOOGLE_CLIENT_ID}/dummy/g' test.docker-compose.yml
+sed -i 's/{ADMIN_PASS}/secret/g' test.docker-compose.yml
+
+
 
 for var in $COMPOSE_VARS_TEST; do
 
