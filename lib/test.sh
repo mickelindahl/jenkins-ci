@@ -7,14 +7,16 @@ assert "APP_NAME" "BRANCH_NAME" "SITE_URL"
 cp sample.docker-compose.yml test.docker-compose.yml
 
 NAME="test-$APP_NAME-$BRANCH_NAME"
+DB_NAME="test-$DB_NAME"
+
 
 sed -i "s/{command}/npm test/g" test.docker-compose.yml
 sed -i "s/{tty}/false/g" test.docker-compose.yml
 sed -i 's/{restart}/"no"/g' test.docker-compose.yml
-sed -i "s/{NAME}/test-$NAME/g" test.docker-compose.yml
+sed -i "s/{NAME}/$NAME/g" test.docker-compose.yml
 sed -i 's/{TAG}/jenkins/g' test.docker-compose.yml
 sed -i 's/{SITE_URL}/dummy/g' test.docker-compose.yml
-sed -i "s/{DB_NAME}/test-$DB_NAME/g" test.docker-compose.yml
+sed -i "s/{DB_NAME}/$DB_NAME/g" test.docker-compose.yml
 sed -i 's/{DB_PASS}/secret/g' test.docker-compose.yml
 sed -i 's/{FACEBOOK_APP_ID}/dummy/g' test.docker-compose.yml
 sed -i 's/{FACEBOOK_APP_SECRET}/dummy/g' test.docker-compose.yml
