@@ -3,7 +3,12 @@
 ## Use
 Go to project source an run
 
-git submodule add git@github.com:mickelindahl/jenkins-ci.git
+git submodule add  https://github.com/mickelindahl/jenkins-ci
+
+the cd into jenkins-ci and set remote got git
+git remote set-url origin git@github.com:mickelindahl/jenkins-ci.git
+
+This is so jenkins will be able to fetch submodule via https
 
 Merge `jenkins-ci/example.sample.docker-compose.yml` with or your `sample.docker-compose.yml` 
 or copy it to your project to have it as a start for creating `sample.docker-compose.yml`
