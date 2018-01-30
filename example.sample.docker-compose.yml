@@ -2,12 +2,15 @@ version: "3"
 
 services:
   web:
-    build: 
+    build:
       context: .
-    image: {name}:{tag}
-    container_name: {name}
+    image: {NAME}:{TAG}
+    container_name: {NAME}
     environment:
-        VIRTUAL_HOST: {virtual-host}
+        VIRTUAL_HOST: {SITE_URL}
+    expose:
+      - "{APP_PORT}"
+    network_mode: "bridge"
     tty: {tty}
     restart: {restart}
     command: {command}

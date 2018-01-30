@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ./ci/lib/assert.sh
+. ./jenkins-ci/lib/assert.sh
 
 assert "APP_NAME" "BRANCH_NAME" "SITE_URL"
 
