@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+     stage('Git submodule') {
+       steps {
+
+         sh "git submodule init && git submodule update"
+       }
+     }
      stage('Environment') {
        steps {
          script {
