@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ./ci/lib/print_stack.sh
+. ./jenkins-ci/lib/print_stack.sh
 
 assert () {
 

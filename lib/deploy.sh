@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. ./ci/lib/assert.sh
+. ./jenkins-ci/lib/assert.sh
 
 assert "BRANCH_NAME" "JOB_NAME" "SITE_URL" "PATH_REMOTE_DEPLOY"
 

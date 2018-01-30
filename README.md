@@ -3,7 +3,7 @@
 ## Use
 Go to project source an run
 
-`git submodule add https://github.com/mickelindahl/jenkins-ci`
+git submodule add git@github.com:mickelindahl/jenkins-ci.git
 
 Merge `jenkins-ci/example.sample.docker-compose.yml` with or your `sample.docker-compose.yml` 
 or copy it to your project to have it as a start for creating `sample.docker-compose.yml`
@@ -55,3 +55,6 @@ Done!
 
 
 ## How to commit and push to submodule
+
+Go into the directory and run git add ., git commit -am "" and git push as usally
+

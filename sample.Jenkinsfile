@@ -22,13 +22,13 @@ pipeline {
      }
      stage('Test') {
        steps {
-         sh './ci/lib/test.sh'
+         sh './jenkins-ci/lib/test.sh'
        }
      }
      stage('Build') {
        steps {
 
-         sh './ci/lib/build.sh'
+         sh './jenkins-ci/lib/build.sh'
        }
      }
      stage('Deploy') {
@@ -41,7 +41,7 @@ pipeline {
        steps {
 
          sshagent(credentials: ['deploy']) {
-           sh '. ./ci/lib/deploy.sh'
+           sh '. ./jenkins-ci/lib/deploy.sh'
          }
        }
      }
@@ -51,8 +51,8 @@ pipeline {
     always {
       sshagent(credentials: ['deploy']) {
 
-         sh 'cat ./ci/lib/always.sh'
-         sh 'scp -o $o ./ci/lib/always.sh jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY'
+         sh 'cat ./jenkins-ci/lib/always.sh'
+         sh 'scp -o $o ./jenkins-ci/lib/always.sh jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY'
          sh 'ssh -o StrictHostKeyChecking=no -l jenkins stakesarehigh.co "cd /opt/deploy/test-ci-master; cat always.sh"'
          sh 'ssh -o $o -l $user $SITE_URL "cd $PATH_REMOTE_DEPLOY; ./always.sh"'
       }
@@ -60,12 +60,12 @@ pipeline {
     success {
       sshagent(credentials: ['deploy']) {
 
-         sh 'scp -o $o ./ci/lib/success.sh jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY'
+         sh 'scp -o $o ./jenkins-ci/lib/success.sh jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY'
          sh 'ssh -o $o -l $user $SITE_URL "cd $PATH_REMOTE_DEPLOY; ./success.sh $NAME $TAG"'
       }
       script {
 
-        def root_dir=pwd()+"/ci/lib"
+        def root_dir=pwd()+"/jenkins-ci/lib"
         def slack = load "${root_dir}/slack.groovy"
         slack.notify("success")
       }
@@ -73,11 +73,11 @@ pipeline {
     failure {
       sshagent(credentials: ['deploy']) {
 
-        sh '. ./ci/lib/failure.sh'
+        sh '. ./jenkins-ci/lib/failure.sh'
       }
       script {
 
-        def root_dir=pwd()+"/ci/lib"
+        def root_dir=pwd()+"/jenkins-ci/lib"
         def slack = load "${root_dir}/slack.groovy"
         slack.notify("failure")
       }
