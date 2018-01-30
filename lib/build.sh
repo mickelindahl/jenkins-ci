@@ -13,8 +13,11 @@ sed -i "s/{restart}/always/g" build.docker-compose.yml
 
 for var in $COMPOSE_VARS_BUILD; do
 
+    echo $(eval echo "s/{$var}/\$$var/g")
     sed -i $(eval echo "s/{$var}/\$$var/g") build.docker-compose.yml
 
 done
+
+cat build.docker-compose.yml
 
 docker-compose -f build.docker-compose.yml build

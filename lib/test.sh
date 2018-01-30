@@ -16,9 +16,12 @@ sed -i 's/{SITE_URL}/dummy/g' test.docker-compose.yml
 
 for var in $COMPOSE_VARS_TEST; do
 
+    echo $(eval echo "s/{$var}/\$$var/g")
     sed -i $(eval echo "s/{$var}/\$$var/g") test.docker-compose.yml
 
 done
+
+cat test.docker-compose.yml
 
 docker-compose -f test.docker-compose.yml build
 docker-compose -f test.docker-compose.yml up -d
