@@ -54,3 +54,6 @@ Done!
 
 
 ## How to commit and push to submodule
+
+Go into the directory and run git add ., git commit -am "" and git push as usally
+
