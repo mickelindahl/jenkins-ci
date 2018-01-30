@@ -4,7 +4,11 @@
 
 assert "BRANCH_NAME" "JOB_NAME" "SITE_URL" "PATH_REMOTE_DEPLOY"
 
-ssh -o $o -l $user $SITE_URL mkdir -p $PATH_REMOTE_DEPLOY
+ssh -o $o -l $user $SITE_URL "
+    if [ ! -d $PATH_REMOTE_DEPLOY ]; then
+       mkdir -p $PATH_REMOTE_DEPLOY
+    fi
+    "
 ssh -o $o -l $user $SITE_URL "
     cd $PATH_REMOTE_DEPLOY
     if [ -f build.docker-compose.yml ]; then
