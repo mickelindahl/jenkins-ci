@@ -33,11 +33,12 @@ pipeline {
      }
      stage('Build') {
        when {
-          anyOf {
-             branch 'master'
-             branch 'test'
-          }
-     }
+         anyOf {
+           branch 'master'
+           branch 'test'
+           branch 'develop'
+         }
+       }
        steps {
 
          sh './jenkins-ci/lib/build.sh'
@@ -45,10 +46,11 @@ pipeline {
      }
      stage('Deploy') {
        when {
-            anyOf {
-               branch 'master'
-               branch 'test'
-            }
+         anyOf {
+           branch 'master'
+           branch 'test'
+           branch 'develop'
+         }
        }
        steps {
 
