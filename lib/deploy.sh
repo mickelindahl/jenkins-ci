@@ -29,7 +29,7 @@ sleep 15
 
 STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
 
-RESPONSE=$(curl "https://$SITE_URL"
+RESPONSE=$(curl "https://$SITE_URL")
 echo $RESPONSE
 
 if [ "$STATUS_CODE" = "200" ]; then
