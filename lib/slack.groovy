@@ -49,8 +49,8 @@ def notify(String status) {
                          "short": true
                      ],
                      [
-                         "title": "Project",
-                         "value": "${env.NODE_NAME}",
+                         "title": "Site",
+                         "value": "<${env.SITE_URL}>",
                          "short": true
                      ]
              ],
