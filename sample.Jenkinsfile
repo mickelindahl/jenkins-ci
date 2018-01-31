@@ -63,9 +63,8 @@ pipeline {
     always {
       sshagent(credentials: ['deploy']) {
 
-         sh 'cat ./jenkins-ci/lib/always.sh'
-         sh 'scp -o $o ./jenkins-ci/lib/always.sh jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY'
-         sh 'ssh -o StrictHostKeyChecking=no -l jenkins stakesarehigh.co "cd /opt/deploy/test-ci-master; cat always.sh"'
+         sh 'ssh -o StrictHostKeyChecking=no -l jenkins stakesarehigh.co mkdir -p $PATH_REMOTE_DEPLOY/'
+         sh 'scp -o $o ./jenkins-ci/lib/always.sh jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY/'
          sh 'ssh -o $o -l $user $SITE_URL "cd $PATH_REMOTE_DEPLOY; ./always.sh"'
       }
     }
