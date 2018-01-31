@@ -9,6 +9,6 @@ if [ -f previous.build.docker-compose.yml ]; then
 
    ssh -o $o -l $user $SITE_URL docker rmi $(docker images -f=reference='${NAME:${$TAG}' -q --no-trunc)
    ssh -o $o -l $user $SITE_URL mv previous.build.docker-compose.yml build.docker-compose.yml
-   ssh -o $o -l $user $SITE_URL docker-compose -f build.docker-compose.yml up -d
+   ssh -o $o -l $user $SITE_URL docker-compose -f build.docker-compose.yml -p ${NAME} up -d
 
 fi

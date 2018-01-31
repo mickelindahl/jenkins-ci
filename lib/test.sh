@@ -34,8 +34,10 @@ done
 
 cat test.docker-compose.yml
 
-docker-compose -f test.docker-compose.yml build
-docker-compose -f test.docker-compose.yml up -d
+docker-compose -f test.docker-compose.yml -p ${NAME} build
+docker-compose -f test.docker-compose.yml -p ${NAME} stop
+docker-compose -f test.docker-compose.yml -p ${NAME} rm -f
+docker-compose -f test.docker-compose.yml -p ${NAME} up -d
 
 docker logs -f $NAME
 docker wait $NAME

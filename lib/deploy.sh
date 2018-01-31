@@ -8,8 +8,9 @@ ssh -o $o -l $user $SITE_URL "mkdir -p $PATH_REMOTE_DEPLOY"
 ssh -o $o -l $user $SITE_URL "
     cd $PATH_REMOTE_DEPLOY
     if [ -f build.docker-compose.yml ]; then
-      docker-compose -f build.docker-compose.yml stop
-      docker-compose -f build.docker-compose.yml rm
+
+      docker-compose -f build.docker-compose.yml -p ${NAME} stop
+      docker-compose -f build.docker-compose.yml -p ${NAME} rm -f
       mv build.docker-compose.yml previous.build.docker-compose.yml;
 
     fi
@@ -17,9 +18,9 @@ ssh -o $o -l $user $SITE_URL "
 scp -o $o build.docker-compose.yml jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY
 ssh -o $o -l $user $SITE_URL "
     cd $PATH_REMOTE_DEPLOY
-    docker stop $NAME
-    docker rm $NAME
-    docker-compose -f build.docker-compose.yml up -d
+    docker-compose -f build.docker-compose.yml -p ${NAME} stop
+    docker-compose -f build.docker-compose.yml -p ${NAME} rm -f
+    docker-compose -f build.docker-compose.yml -p ${NAME}  up -d
     "
 
 echo "Wait 10 seconds"
