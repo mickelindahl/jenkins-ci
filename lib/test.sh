@@ -41,3 +41,6 @@ docker-compose -f test.docker-compose.yml -p ${NAME} up -d
 
 docker logs -f $NAME
 docker wait $NAME
+
+docker-compose -f test.docker-compose.yml -p ${NAME} stop
+docker-compose -f test.docker-compose.yml -p ${NAME} rm -f
