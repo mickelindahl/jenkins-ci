@@ -18,7 +18,7 @@ sed -i "s/{command}/npm test/g" test.docker-compose.yml
 sed -i "s/{tty}/false/g" test.docker-compose.yml
 sed -i 's/{restart}/"no"/g' test.docker-compose.yml
 sed -i "s/{NAME}/$NAME/g" test.docker-compose.yml
-sed -i 's/{TAG}/jenkins/g' test.docker-compose.yml
+sed -i "s/{TAG}/$TAG/g" test.docker-compose.yml
 sed -i 's/{SITE_URL}/dummy/g' test.docker-compose.yml
 sed -i "s/{DB_NAME}/$DB_NAME/g" test.docker-compose.yml
 sed -i 's/{DB_PASS}/secret/g' test.docker-compose.yml
