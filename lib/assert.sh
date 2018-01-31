@@ -6,6 +6,8 @@ assert () {
 
     for arg in "$@"; do
 
+        echo "arg"${!arg}
+
         if [ -d ${!arg} ];then
             print_stack "Missing env $arg"
             exit 1
