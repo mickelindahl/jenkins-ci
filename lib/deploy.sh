@@ -11,6 +11,7 @@ ssh -o $o -l $user $SITE_URL "
 
       docker-compose -f build.docker-compose.yml -p ${NAME} stop
       docker-compose -f build.docker-compose.yml -p ${NAME} rm -f
+      ls -la
       mv build.docker-compose.yml previous.build.docker-compose.yml;
 
     fi

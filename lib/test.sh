@@ -24,7 +24,6 @@ sed -i 's/{GOOGLE_CLIENT_ID}/dummy/g' test.docker-compose.yml
 sed -i 's/{ADMIN_PASS}/secret/g' test.docker-compose.yml
 
 
-
 for var in $COMPOSE_VARS_TEST; do
 
     echo $(eval echo "s/{$var}/\$$var/g")
