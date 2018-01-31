@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+echo "BN: $BRANCH_NAME"
+
 . ./jenkins-ci/lib/assert.sh
+
+echo "BN: $BRANCH_NAME"
 
 assert "APP_NAME" "BRANCH_NAME" "SITE_URL"
 
