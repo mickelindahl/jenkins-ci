@@ -29,7 +29,7 @@ sleep 10
 
 STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
 
-if [ "$STATUS_CODE"=="200" ]; then
+if [ "$STATUS_CODE" = "200" ]; then
 
     echo "ok $STATUS_CODE"
 
