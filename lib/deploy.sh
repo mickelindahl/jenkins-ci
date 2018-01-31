@@ -34,7 +34,6 @@ echo $RESPONSE
 if [ "$STATUS_CODE" = "200" ]; then
 
     echo "ok $STATUS_CODE"
-    exit 0
 
 else
 
