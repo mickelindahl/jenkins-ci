@@ -24,10 +24,13 @@ ssh -o $o -l $user $SITE_URL "
     docker-compose -f build.docker-compose.yml -p ${NAME}  up -d
     "
 
-echo "Wait 10 seconds"
-sleep 10
+echo "Wait 15 seconds"
+sleep 15
 
 STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
+
+RESPONSE=$(curl "https://$SITE_URL"
+echo $RESPONSE
 
 if [ "$STATUS_CODE" = "200" ]; then
 
