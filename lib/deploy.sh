@@ -24,12 +24,29 @@ ssh -o $o -l $user $SITE_URL "
     docker-compose -f build.docker-compose.yml -p ${NAME}  up -d
     "
 
-echo "Wait 15 seconds"
-sleep 15
+echo "Test response"
 
-STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
+TIME=0
+OK=0
+while [[ ( $TIME -le 60 ) && ( $OK -le 1 ) ]]; do
 
-echo $RESPONSE
+
+  sleep 5
+  echo "Testing response $TIME seconds"
+
+  TIME=$(( $TIME + 5 ))
+
+  STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
+
+  echo $RESPONSE
+
+  if [ "$STATUS_CODE" = "200" ]; then
+
+    OK=1
+
+  fi
+
+done
 
 if [ "$STATUS_CODE" = "200" ]; then
 
