@@ -30,15 +30,12 @@ TIME=0
 OK=0
 while [[ ( $TIME -le 60 ) && ( $OK -le 1 ) ]]; do
 
-
   sleep 5
   echo "Testing response $TIME seconds"
 
   TIME=$(( $TIME + 5 ))
 
   STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
-
-  echo $RESPONSE
 
   if [ "$STATUS_CODE" = "200" ]; then
 
