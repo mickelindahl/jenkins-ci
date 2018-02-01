@@ -22,7 +22,6 @@ sed -i "s/{TAG}/$TAG/g" test.docker-compose.yml
 sed -i 's/{SITE_URL}/dummy/g' test.docker-compose.yml
 sed -i "s/{DB_NAME}/$DB_NAME/g" test.docker-compose.yml
 sed -i 's/{DB_PASS}/secret/g' test.docker-compose.yml
-sed -i 's/{DB_EXTERNAL_PORT}/5999/g' test.docker-compose.yml
 sed -i 's/{FACEBOOK_APP_ID}/dummy/g' test.docker-compose.yml
 sed -i 's/{FACEBOOK_APP_SECRET}/dummy/g' test.docker-compose.yml
 sed -i 's/{GOOGLE_CLIENT_ID}/dummy/g' test.docker-compose.yml
