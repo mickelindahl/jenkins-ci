@@ -8,6 +8,6 @@ echo "IMAGES:i-$IMAGES-i"
 
 if [ ! "$IMAGES" = "" ]; then
 
-    docker rmi ${IMAGES};
+    docker rmi -f ${IMAGES};
 
 fi
