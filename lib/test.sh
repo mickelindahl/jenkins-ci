@@ -45,6 +45,7 @@ docker-compose -f test.docker-compose.yml -p ${NAME} up -d
 docker logs -f $NAME 2>&1 | tee test.log
 docker wait $NAME
 
+
 a=`cat test.log`
 flag=`echo $a|awk '{print match($0,"failed")}'`;
 
@@ -53,10 +54,11 @@ flag=`echo $a|awk '{print match($0,"failed")}'`;
 
 if [ $flag -gt 0 ];then
 
-    echo "Success";
-
-else
     echo "failed tests";
     exit 1
+
+else
+
+    echo "Success";
 
 fi
