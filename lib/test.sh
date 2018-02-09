@@ -47,14 +47,14 @@ docker wait $NAME
 
 
 a=`cat test.log`
-flag=`echo $a|awk '{print match($0,"failed")}'`;
+flag=`echo $a|awk '{print match($0,"tests failed")}'`;
 
 # Remove old test images
 . ./jenkins-ci/lib/success.sh $NAME $TAG
 
 if [ $flag -gt 0 ];then
 
-    echo "failed tests";
+    echo "failed tests $flag";
     exit 1
 
 else
