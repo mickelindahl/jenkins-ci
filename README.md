@@ -1,6 +1,11 @@
 # Jenkins CI
 
-## Use
+## Usage
+
+**OBS Make sure tha shell in jenkins is /bin/bahs!**
+*This apllies since sh is the standard shell in jenkins. You can change the stardar shell under Manage Jenins -> Configure system -> Shell -> Shell executable*. Otherwise will the shell script fails 
+because they have bourne shell syntax that sh shell can not handel
+
 Go to project source an run
 
 git submodule add  https://github.com/mickelindahl/jenkins-ci
@@ -13,9 +18,10 @@ This is so jenkins will be able to fetch submodule via https
 Merge `jenkins-ci/example.sample.docker-compose.yml` with or your `sample.docker-compose.yml` 
 or copy it to your project to have it as a start for creating `sample.docker-compose.yml`
 
-
 Copy `jekins-ci/sample.credentials.groovy` to `credentials.groovy` 
 and `credentials.groovy`to your .gitignore file"
+
+### Enable publish with ssh-agent
 
 **Make sure you can access deploy machine over ssh**
 
@@ -36,11 +42,18 @@ Run `cat .ssh/id_rsa.pub`
 Step 2, create `authorized_keys` in `.ssh/` paste the pub file contents. Then make sure  
 `authorized_keys` has permission 644 and `.ssh/` has 700
 
-Step 3, configure Jenkins
-OBS it is contetn of id_rsa not id_rsa.pub now
-* In the jenkins web control panel, nagivate to "Manage Jenkins" -> "Configure System" -> "Publish over SSH"
-* Either enter the path of the file e.g. "var/lib/jenkins/.ssh/id_rsa", or paste in the same content as on the target server.
-* Enter your passphrase, server and user details, and you are good to go!
+Step 3, configure Jenkins OBS it is contetn of id_rsa not id_rsa.pub now
+
+* In the jenkins web control panel, nagivate to "Credentials" -> "System" -> "Global credentials (unrestricted) -> Add credentials" -> "SSH username with private key"
+* Enter username
+* Add private key
+* Enter ID, this will be used with the plugin as
+   sshagent(credentials: ['{ID}']) {...}
+
+* save
+
+
+### Add secret file with credentials
 
 Edit `credentials.groovy`.
 
