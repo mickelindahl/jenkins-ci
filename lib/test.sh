@@ -28,6 +28,7 @@ sed -i 's/{GOOGLE_CLIENT_ID}/dummy/g' test.docker-compose.yml
 sed -i 's/{ADMIN_PASS}/secret/g' test.docker-compose.yml
 sed -i 's/{HOUSE_PASS}/secret/g' test.docker-compose.yml
 sed -i 's/{DB_EXTERNAL_PORT}/$DB_EXTERNAL_PORT_TEST/g' test.docker-compose.yml
+sed -i 's/{MAILGUN_API_KEY}/dummy/g' test.docker-compose.yml
 
 
 for var in $COMPOSE_VARS_TEST; do
