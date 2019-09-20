@@ -35,7 +35,7 @@ while [[ ( $TIME -le 60 ) && ( $OK -eq 0 ) ]]; do
 
   TIME=$(( $TIME + 5 ))
 
-  STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL")
+  STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL/auth")
 
   if [ "$STATUS_CODE" = "200" ]; then
 
