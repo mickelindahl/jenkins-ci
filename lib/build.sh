@@ -2,7 +2,7 @@
 
 . ./jenkins-ci/lib/assert.sh
 
-assert "ADMIN_PASS" "COMMAND" "DB_PASS" "DB_EXTERNAL_PORT"
+assert "ADMIN_PASS" "COMMAND" "DB_NAME" "DB_PASS" "DB_EXTERNAL_PORT"
 assert "FACEBOOK_APP_ID" "GOOGLE_CLIENT_ID"
 assert "HOUSE_PASS" "MAILGUN_API_KEY" "NAME" "SITE_URL" "TAG"
 
@@ -30,6 +30,8 @@ sed -i "s/{NAME}/$NAME/g" build.docker-compose.yml
 sed -i "s/{TAG}/$TAG/g" build.docker-compose.yml
 sed -i "s/{SITE_URL}/$SITE_URL/g" build.docker-compose.yml
 sed -i "s/{DB_PASS}/$DB_PASS/g" build.docker-compose.yml
+sed -i "s/{DB_USER}/$DB_NAME/g" build.docker-compose.yml
+sed -i "s/{DB_NAME}/$DB_NAME/g" build.docker-compose.yml
 sed -i "s/{DB_EXTERNAL_PORT}/$DB_EXTERNAL_PORT/g" build.docker-compose.yml
 
 

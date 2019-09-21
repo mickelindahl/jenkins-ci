@@ -2,7 +2,7 @@
 
 . ./jenkins-ci/lib/assert.sh
 
-assert "NAME" "TAG"
+assert "DB_NAME" "NAME" "TAG"
 
 echo "NAME:TAG=$NAME:$TAG"
 
@@ -32,6 +32,8 @@ sed -i "s/{NAME}/$TEST_NAME/g" test.docker-compose.yml
 sed -i "s/{TAG}/$TAG/g" test.docker-compose.yml
 sed -i 's/{SITE_URL}/dummy/g' test.docker-compose.yml
 sed -i 's/{DB_PASS}/secret/g' test.docker-compose.yml
+sed -i "s/{DB_USER}/$DB_NAME/g" build.docker-compose.yml
+sed -i "s/{DB_NAME}/$DB_NAME/g" build.docker-compose.yml
 sed -i "s/{DB_EXTERNAL_PORT}/$DB_EXTERNAL_PORT_TEST/g" test.docker-compose.yml
 
 
