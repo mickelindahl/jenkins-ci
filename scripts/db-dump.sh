@@ -1,7 +1,6 @@
 #! /bin/bash
 CONTAINER=$1
-SCHEMA=$2
-USER=$3
 
+# Backup:
+docker exec -t -u postgres $CONTAINER pg_dumpall -c > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
 
-docker exec $CONTAINER pg_dump -U $USER $SCHEMA > backup.db
