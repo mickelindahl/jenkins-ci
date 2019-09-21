@@ -28,7 +28,7 @@ echo "Test response"
 
 TIME=0
 OK=0
-while [[ ( $TIME -le 300 ) && ( $OK -eq 0 ) ]]; do
+while [[ ( $TIME -le 1000 ) && ( $OK -eq 0 ) ]]; do
 
   sleep 15
   echo "Testing response $TIME seconds"
