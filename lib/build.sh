@@ -26,8 +26,7 @@ cp sample.docker-compose.yml build.docker-compose.yml
 sed -i "s/{command}/$COMMAND/g" build.docker-compose.yml
 sed -i "s/{tty}/true/g" build.docker-compose.yml
 sed -i 's/{restart}/"always"/g' build.docker-compose.yml
-sed -i "s/{IMAGE}/$NAME/g" build.docker-compose.yml
-sed -i "s/{CONTAINER}/$NAME/g" build.docker-compose.yml
+sed -i "s/{NAME}/$NAME/g" build.docker-compose.yml
 sed -i "s/{TAG}/$TAG/g" build.docker-compose.yml
 sed -i "s/{SITE_URL}/$SITE_URL/g" build.docker-compose.yml
 sed -i "s/{DB_PASS}/$DB_PASS/g" build.docker-compose.yml
