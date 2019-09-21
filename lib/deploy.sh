@@ -2,7 +2,7 @@
 
 . ./jenkins-ci/lib/assert.sh
 
-assert "BRANCH_NAME" "JOB_NAME" "SITE_URL" "PATH_REMOTE_DEPLOY"
+assert "SITE_URL" "PATH_REMOTE_DEPLOY"
 
 ssh -o $o -l $user $SITE_URL "mkdir -p $PATH_REMOTE_DEPLOY"
 ssh -o $o -l $user $SITE_URL "
@@ -28,12 +28,12 @@ echo "Test response"
 
 TIME=0
 OK=0
-while [[ ( $TIME -le 60 ) && ( $OK -eq 0 ) ]]; do
+while [[ ( $TIME -le 300 ) && ( $OK -eq 0 ) ]]; do
 
-  sleep 5
+  sleep 15
   echo "Testing response $TIME seconds"
 
-  TIME=$(( $TIME + 5 ))
+  TIME=$(( $TIME + 15 ))
 
   STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL/auth")
 
