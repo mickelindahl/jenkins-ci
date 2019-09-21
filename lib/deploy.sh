@@ -4,6 +4,8 @@
 
 assert "SITE_URL" "PATH_REMOTE_DEPLOY"
 
+
+
 ssh -o $o -l $user $SITE_URL "mkdir -p $PATH_REMOTE_DEPLOY"
 ssh -o $o -l $user $SITE_URL "
     cd $PATH_REMOTE_DEPLOY

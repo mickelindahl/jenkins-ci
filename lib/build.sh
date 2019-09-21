@@ -6,12 +6,10 @@ assert "ADMIN_PASS" "COMMAND" "DB_PASS" "DB_EXTERNAL_PORT"
 assert "FACEBOOK_APP_ID" "GOOGLE_CLIENT_ID"
 assert "HOUSE_PASS" "MAILGUN_API_KEY" "NAME" "SITE_URL" "TAG"
 
-BUILD_NAME="test-$NAME"
-
 cp sample.env .env
 
 sed -i "s/{admin-pass}/$ADMIN_PASS/g" .env && \
-sed -i "s/{db-host}/$BUILD_NAME-db/g" .env && \
+sed -i "s/{db-host}/$NAME-db/g" .env && \
 sed -i "s/{db-user}/app/g" .env && \
 sed -i "s/{db-name}/app/g" .env && \
 sed -i "s/{db-pass}/$DB_PASS/g" .env && \
@@ -28,7 +26,8 @@ cp sample.docker-compose.yml build.docker-compose.yml
 sed -i "s/{command}/$COMMAND/g" build.docker-compose.yml
 sed -i "s/{tty}/true/g" build.docker-compose.yml
 sed -i 's/{restart}/"always"/g' build.docker-compose.yml
-sed -i "s/{NAME}/$BUILD_NAME/g" build.docker-compose.yml
+sed -i "s/{IMAGE}/$NAME/g" build.docker-compose.yml
+sed -i "s/{CONTAINER}/$NAME/g" build.docker-compose.yml
 sed -i "s/{TAG}/$TAG/g" build.docker-compose.yml
 sed -i "s/{SITE_URL}/$SITE_URL/g" build.docker-compose.yml
 sed -i "s/{DB_PASS}/$DB_PASS/g" build.docker-compose.yml
