@@ -41,8 +41,6 @@ sed -i "s/{DB_EXTERNAL_PORT}/$DB_EXTERNAL_PORT/g" build.docker-compose.yml
 #
 #done
 
-exit
-
 docker-compose -f build.docker-compose.yml build
 
 echo "Remove .env"

@@ -41,8 +41,6 @@ sed -i "s/{DB_EXTERNAL_PORT}/$DB_EXTERNAL_PORT_TEST/g" test.docker-compose.yml
 #
 #done
 
-exit
-
 docker-compose -f test.docker-compose.yml -p ${TEST_NAME} build
 docker-compose -f test.docker-compose.yml -p ${TEST_NAME} stop
 docker-compose -f test.docker-compose.yml -p ${TEST_NAME} rm -f
