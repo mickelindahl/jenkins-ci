@@ -44,6 +44,7 @@ sed -i "s/{DB_EXTERNAL_PORT}/$DB_EXTERNAL_PORT_TEST/g" test.docker-compose.yml
 #done
 
 # Ship over for testing
+echo "Copy over test.docker-compose.yml to $SITE_URL:$PATH_REMOTE_DEPLOY"
 scp -o $o test.docker-compose.yml jenkins@$SITE_URL:$PATH_REMOTE_DEPLOY
 
 docker-compose -f test.docker-compose.yml -p ${TEST_NAME} build
