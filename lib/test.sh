@@ -13,7 +13,7 @@ TEST_NAME="test-$NAME"
 sed -i "s/{admin-pass}/secret/g" .env && \
 sed -i "s/{db-host}/$TEST_NAME-db/g" .env && \
 sed -i "s/{db-user}/$DB_NAME/g" .env && \
-sed -i "s/{db-name}/$DB_NAME_TEST/g" .env && \
+sed -i "s/{db-name-test}/$DB_NAME_TEST/g" .env && \
 sed -i "s/{db-pass}/secret/g" .env && \
 sed -i "s/{db-port}/5432/g" .env && \
 sed -i "s/{facebook-app-id}/dummy/g" .env && \
