@@ -41,9 +41,12 @@ while [[ ( $TIME -le 1000 ) && ( $OK -eq 0 ) ]]; do
 
   if [ "$STATUS_CODE" = "200" ]; then
 
+    echo "OK"
     OK=1
 
   fi
+
+  echo "STATUS_CODE: $STATUS_CODE"
 
 done
 
