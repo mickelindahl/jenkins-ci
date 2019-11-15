@@ -37,7 +37,8 @@ while [[ ( $TIME -le 1000 ) && ( $OK -eq 0 ) ]]; do
 
   TIME=$(( $TIME + 15 ))
 
-  STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL/auth")
+  STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://$SITE_URL/auth" || echo "Curl failed")
+  echo "Exit code: $?"
 
   if [ "$STATUS_CODE" = "200" ]; then
 
