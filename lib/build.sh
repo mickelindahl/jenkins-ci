@@ -19,7 +19,7 @@ sed -i "s/{google-client-id}/$GOOGLE_CLIENT_ID/g" .env && \
 sed -i "s/{house-pass}/$HOUSE_PASS/g" .env && \
 sed -i "s/{host}/0.0.0.0/g" .env && \
 sed -i "s#{mailgun-api-key}#$MAILGUN_API_KEY#g" .env && \
-sed -i "s#{site}#$SITE_URL#g" .env
+sed -i "s#{site}#https://$SITE_URL#g" .env
 
 cp sample.docker-compose.yml build.docker-compose.yml
 
